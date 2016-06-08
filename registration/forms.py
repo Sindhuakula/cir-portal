@@ -69,7 +69,7 @@ class StudentRegistrationForm(ModelForm):
 
     class Meta:
         model = Student
-        fields = ['aums_id'] + student_fields
+        fields = ['aums_id'] +  student_fields
 
 
 
