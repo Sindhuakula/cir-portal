@@ -81,24 +81,25 @@ class StudentManager(models.Manager):
         # do something with the book
         return student
 
+COURSES = (('CSE', _('CSE')), ('ME', _('ME')), ('ECE', _('ECE')), ('EEE', _('EEE')))
 
 class Student(models.Model):
-    aums_id = models.CharField(_('Aums ID'),  max_length=32, blank=False, unique=True, primary_key=True)
+    aums_id = models.CharField(_('Aums ID'), max_length=32, blank=False, unique=True, primary_key=True)
     name = models.CharField(_('First Name'), max_length=32, blank=True, null=True)
     curr_course = models.CharField(_('Current Course'), max_length=32, blank=True, null=True,
                                   validators=[RegexValidator(regex='^[A-Za-z]*$')])
-    branch = models.CharField(_('Branch'), max_length=32, blank=True, null=True,
+    branch = models.CharField(_('Branch'), max_length=32,choices = COURSES, blank=True, null=True,
                                   validators=[RegexValidator(regex='^[A-Za-z]*$')])
-    tenth_mark = models.CharField(_('10th Mark'),max_length=5, blank=True, null=True)
-    twelth_mark = models.CharField(_('12th Mark'),max_length=5, blank=True, null=True)
-    s1 = models.CharField(_('S1 Mark'), max_length=5, blank=True, null=True)
-    s2 = models.CharField(_('S2 Mark'), max_length=5, blank=True, null=True)
-    s3 = models.CharField(_('S3 Mark'), max_length=5, blank=True, null=True)
-    s4 = models.CharField(_('S4 Mark'), max_length=5, blank=True, null=True)
-    s5 = models.CharField(_('S5 Mark'), max_length=5, blank=True, null=True)
-    s6 = models.CharField(_('S6 Mark'), max_length=5, blank=True, null=True)
-    cgpa = models.CharField(_('CGPA'), max_length=5,blank=True, null=True)
-    curr_arrears = models.CharField(_('No of current arrears'),max_length=5, blank=True, null=True)
-    hist_arrears = models.CharField(_('No of history arrears'),max_length=5, blank=True, null=True)
+    tenth_mark = models.FloatField(_('10th Mark'), blank=True, null=True)
+    twelth_mark = models.FloatField(_('12th Mark'), blank=True, null=True)
+    s1 = models.FloatField(_('S1 Mark'), blank=True, null=True)
+    s2 = models.FloatField(_('S2 Mark'),  blank=True, null=True)
+    s3 = models.FloatField(_('S3 Mark'), blank=True, null=True)
+    s4 = models.FloatField(_('S4 Mark'), blank=True, null=True)
+    s5 = models.FloatField(_('S5 Mark'), blank=True, null=True)
+    s6 = models.FloatField(_('S6 Mark'),  blank=True, null=True)
+    cgpa = models.FloatField(_('CGPA'), blank=True, null=True)
+    curr_arrears = models.FloatField(_('No of current arrears'), blank=True, null=True)
+    hist_arrears = models.FloatField(_('No of history arrears'), blank=True, null=True)
 
     Objects = StudentManager()
