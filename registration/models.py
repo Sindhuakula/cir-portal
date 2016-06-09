@@ -81,7 +81,7 @@ class StudentManager(models.Manager):
         # do something with the book
         return student
 
-COURSES = (('CSE', _('CSE')), ('ME', _('ME')), ('ECE', _('ECE')), ('EEE', _('EEE')))
+COURSES = (('cse', _('CSE')), ('me', _('ME')), ('ece', _('ECE')), ('eee', _('EEE')))
 
 class Student(models.Model):
     aums_id = models.CharField(_('Aums ID'), max_length=32, blank=False, unique=True, primary_key=True)
