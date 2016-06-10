@@ -90,11 +90,11 @@ def handle_student_upload(request):
                 counter = counter+1
 
             return render_to_response('register/cirstaff/register_bulk_student_list.html',{'counter':counter },
-                                       context_instance=RequestContext(request))
+                                      context_instance=RequestContext(request))
         else :
-             return redirect(request.META['HTTP_REFERER'])
+            return redirect(request.META['HTTP_REFERER'])
     else:
-         return HttpResponseBadRequest()
+        return HttpResponseBadRequest()
 
 
 class StudentListView(LoginRequiredMixin,ListView):
@@ -132,3 +132,10 @@ class StudentFilterExternalView(ListView):
         return Student.Objects.filter(cgpa__gte=cgpa, curr_arrears__gte = arrears, branch = branch, tenth_mark__gte = tenth, twelth_mark__gte = twelth )
 
 
+class StudentTechnicalTestEntryView(TemplateView):
+    template_name = "register/cirstaff/tests/technical_test.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentTechnicalTestEntryView, self).get_context_data(**kwargs)
+        context['myvar'] = Test.Objects.all()
+        return context

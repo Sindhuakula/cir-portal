@@ -14,7 +14,7 @@ user_widgets = {
     'email'         : forms.TextInput(attrs={'placeholder':_('Your Email address'),
                                              'required': True}),
     'aums_id'       : forms.TextInput(attrs={'placeholder':_('Your AUMS ID'),
-                                             'required': True}),  
+                                             'required': True}),
 }
 
 
@@ -24,7 +24,7 @@ captcha_attrs = {'theme': 'clean', 'size': 'compact'}
 
 class UserRegistrationForm(ModelForm):
     repass = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Re Enter Password',
-                                                     'min_length':1, 'max_length':20}))
+                                                               'min_length':1, 'max_length':20}))
 
     class Meta:
         model = User
@@ -71,6 +71,16 @@ class StudentRegistrationForm(ModelForm):
         model = Student
         fields = ['aums_id'] +  student_fields
 
+test_widgets = {
+    'aums_id'       : forms.TextInput(attrs={'placeholder':_('Your AUMS ID'),'required': True}),
+    'marks'        : forms.TextInput(attrs={'placeholder': ('Marks Obtained'),'required': True}),
+}
 
+test_fields =['aums_id', 'marks']
+
+class TechnicalTestEntryForm(ModelForm):
+    class meta:
+        model = TechTest
+        fields = test_fields
 
 

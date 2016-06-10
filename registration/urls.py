@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^student/filter/$', TemplateView.as_view(template_name='register/cirstaff/filter_external.html'),name="external_filter"),
     url(r'^student/filter/internal/$', TemplateView.as_view(template_name='register/cirstaff/filter_internal.html'),name="internal_filter"),
     url(r'^student/filter/external/$',StudentFilterExternalView.as_view(),name='filter_external_list'),
+    url(r'^student/tests/technical/$',StudentTechnicalTestEntryView.as_view(),name='list_'),
 ]
