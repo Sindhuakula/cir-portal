@@ -23,6 +23,9 @@ class TechTestAdmin(admin.ModelAdmin):
   pass
 admin.site.register(TechTest,TechTestAdmin)
 
+
+
+
 class HRTestAdmin(admin.ModelAdmin):
   pass
 admin.site.register(HRTest,HRTestAdmin)

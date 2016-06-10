@@ -125,11 +125,16 @@ class Test(models.Model):
                             choices=TYPES, blank=False, unique=False, null=True)
 
     Objects = TestManager()
+class TechTestManager(models.Manager):
+    def create_test_entry(self, student, test, marks):
+        return self.create(student=student, test=test, marks=marks)
 
 class TechTest(models.Model):
     test=models.ForeignKey(Test,null=False, blank=False)
     student=models.ForeignKey(Student, null=False,blank=False)
     marks=models.FloatField(_('Mark'), blank=True ,null=True)
+
+    Objects = TechTestManager()
 
 class HRTest(models.Model):
     test = models.ForeignKey(Test, null=False, blank=False)
